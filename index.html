@@ -20,17 +20,27 @@
       height: 100vh;
       overflow: hidden;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       color: #fff;
       text-align: center;
     }
 
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      padding: 2.5rem 3rem;
+      max-width: 850px;
+      width: 90%;
+      animation: fadeIn 2s ease;
+    }
+
     h1 {
-      font-size: 3.2rem;
+      font-size: 3rem;
       text-shadow: 0 0 20px #fff, 0 0 40px #ffbdfc, 0 0 60px #a5d8ff;
-      animation: float 4s ease-in-out infinite, fadeIn 2s ease;
       background: linear-gradient(90deg, #fff, #ffe5fa, #a5d8ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -39,21 +49,20 @@
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       margin-top: 1.3rem;
-      max-width: 650px;
-      opacity: 0.9;
-      animation: fadeIn 3s ease;
+      color: #fefefe;
+      opacity: 0.95;
       line-height: 1.6;
+      animation: fadeIn 2.5s ease;
     }
 
     .links {
-      margin-top: 2.8rem;
+      margin-top: 2.2rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1.2rem;
       justify-content: center;
-      animation: fadeIn 3.5s ease;
     }
 
     .link-card {
@@ -105,7 +114,7 @@
       bottom: 15px;
       font-size: 0.9rem;
       color: rgba(255, 255, 255, 0.8);
-      animation: fadeIn 4s ease;
+      animation: fadeIn 3s ease;
     }
 
     .paw {
@@ -113,16 +122,6 @@
       opacity: 0.1;
       font-size: 2rem;
       animation: fall 10s linear infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes gradientShift {
@@ -136,53 +135,53 @@
       100% { background-position: 200% 50%; }
     }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @keyframes fall {
       from { transform: translateY(-10vh) rotate(0deg); }
       to { transform: translateY(110vh) rotate(360deg); }
     }
 
-    .trail {
-      position: fixed;
-      pointer-events: none;
-      animation: fadeOut 1s forwards;
-      font-size: 1.5rem;
-    }
-
-    @keyframes fadeOut {
-      from { opacity: 1; transform: scale(1); }
-      to { opacity: 0; transform: scale(0.5); }
-    }
-
     @media (max-width: 600px) {
-      h1 { font-size: 2.4rem; }
-      p { font-size: 1rem; padding: 0 1rem; }
-      .link-card { padding: 0.8rem 1.5rem; }
+      h1 { font-size: 2.3rem; }
+      p { font-size: 1rem; }
+      .container { padding: 1.8rem; }
     }
   </style>
 </head>
 <body>
-  <h1>Haiii~ Welcome to the Furry Krew! 🐾</h1>
-  <p>
-    Step into a world full of warmth, laughter, and fluff! 🌈<br>
-    We're a cozy community where every fur belongs — whether you're a puppy, kitty, dragon, or anything in between.<br><br>
-    Come hang out, make friends, and share your adventures with the pack! 💙
-  </p>
+  <div class="container">
+    <h1>Haiii~ Welcome to the Furry Krew! 🐾</h1>
+    <p>
+      Furry Krew is all about <strong>creativity</strong>, <strong>fun</strong>, and <strong>building strong connections</strong>! 💙  
+      We specialize in creating and exploring group worlds where everyone can come together, laugh, and make memories.  
+      Whether you’re new to VRChat or a long-time fur, you’re always welcome here — this is your cozy home away from home! 🌈✨
+    </p>
 
-  <div class="links">
-    <div class="link-card">
-      <a href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join us on VRChat</a>
+    <div class="links">
+      <div class="link-card">
+        <a href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join us on VRChat</a>
+      </div>
+      <div class="link-card">
+        <a href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
+      </div>
     </div>
-    <div class="link-card">
-      <a href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
-    </div>
+
+    <button class="music-btn" id="musicToggle">🎵 Play Background Music</button>
   </div>
-
-  <button class="music-btn" id="musicToggle">🎵 Play Background Music</button>
 
   <footer>Made with ❤️, paws, and fluff by the Furry Krew</footer>
 
   <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2023/03/16/audio_4e8f0dc7de.mp3?filename=lofi-chill-beat-140191.mp3" type="audio/mpeg">
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Ambient/Kevin_MacLeod_-_Fluidscape.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -198,18 +197,7 @@
       document.body.appendChild(paw);
     }
 
-    // Mouse paw trail
-    document.addEventListener('mousemove', e => {
-      const trail = document.createElement('div');
-      trail.classList.add('trail');
-      trail.textContent = '🐾';
-      trail.style.left = e.pageX + 'px';
-      trail.style.top = e.pageY + 'px';
-      document.body.appendChild(trail);
-      setTimeout(() => trail.remove(), 1000);
-    });
-
-    // Music toggle
+    // Music toggle with fade in/out
     const music = document.getElementById('bgMusic');
     const toggleBtn = document.getElementById('musicToggle');
     let playing = false;
@@ -220,7 +208,7 @@
         music.play();
         let vol = 0;
         const fadeIn = setInterval(() => {
-          if (vol < 0.5) { vol += 0.02; music.volume = vol; }
+          if (vol < 0.4) { vol += 0.02; music.volume = vol; }
           else clearInterval(fadeIn);
         }, 100);
         toggleBtn.textContent = "🔇 Stop Music";
