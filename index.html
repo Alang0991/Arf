@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Furry Krew 🐾</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #a8c0ff, #fbc2eb);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 20px #fff, 0 0 40px #ffb6f9;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      text-align: center;
+      max-width: 600px;
+      color: #f9f9f9;
+    }
+
+    .links {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    a:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.08);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    }
+
+    .paw {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.1;
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-10vh) rotate(0deg); }
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <h1>Haiii~ Welcome to <span style="color:#ffe5fa;">Furry Krew!</span> 🐾</h1>
+  <p>
+    This is your cozy corner of fluff, fun, and friendship!  
+    Use the links below to join our community and hang out with other furs! 🌸
+  </p>
+
+  <div class="links">
+    <a href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join on VRChat</a>
+    <a href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
+  </div>
+
+  <footer>Made with ❤️ by the Furry Krew</footer>
+
+  <script>
+    // Create cute falling paw prints
+    const paws = ["🐾", "🐕", "🐈", "💙"];
+    for (let i = 0; i < 20; i++) {
+      const paw = document.createElement('div');
+      paw.classList.add('paw');
+      paw.textContent = paws[Math.floor(Math.random() * paws.length)];
+      paw.style.left = Math.random() * 100 + 'vw';
+      paw.style.animationDuration = 5 + Math.random() * 10 + 's';
+      paw.style.fontSize = 1 + Math.random() * 2 + 'rem';
+      document.body.appendChild(paw);
+    }
+  </script>
+</body>
+</html>
