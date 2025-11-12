@@ -3,228 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Furry Krew 🐾</title>
+  <title>Furry Krew 🐾</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      cursor: url('https://cur.cursors-4u.net/others/oth-6/oth578.cur'), auto;
     }
 
     body {
-      background: linear-gradient(135deg, #a5d8ff, #fbc2eb, #ffd6f3);
-      background-size: 300% 300%;
-      animation: gradientShift 12s ease infinite;
       height: 100vh;
+      background: radial-gradient(circle at 30% 30%, #a5d8ff, #fbc2eb, #ffd6f3);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
       overflow: hidden;
+      font-family: 'Poppins', sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      text-align: center;
+      color: white;
     }
 
-    .container {
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-      border-radius: 25px;
-      padding: 2.5rem 3rem;
-      max-width: 850px;
-      width: 90%;
-      animation: fadeIn 2s ease;
-    }
-
-    h1 {
-      font-size: 3rem;
-      text-shadow: 0 0 20px #fff, 0 0 40px #ffbdfc, 0 0 60px #a5d8ff;
-      background: linear-gradient(90deg, #fff, #ffe5fa, #a5d8ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 200% auto;
-      animation: shimmer 4s linear infinite, float 4s ease-in-out infinite;
-    }
-
-    p {
-      font-size: 1.15rem;
-      margin-top: 1.3rem;
-      color: #fefefe;
-      opacity: 0.95;
-      line-height: 1.6;
-      animation: fadeIn 2.5s ease;
-    }
-
-    .links {
-      margin-top: 2.2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      justify-content: center;
-    }
-
-    .link-card {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      padding: 1rem 2rem;
-      backdrop-filter: blur(12px);
-      border: 2px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .link-card:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    .link-card a {
-      color: #fff;
-      font-size: 1.1rem;
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .music-btn {
-      margin-top: 2rem;
-      background: rgba(255, 255, 255, 0.2);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      color: #fff;
-      border-radius: 50px;
-      padding: 0.7rem 1.5rem;
-      cursor: pointer;
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-      transition: 0.3s;
-    }
-
-    .music-btn:hover {
-      background: rgba(255, 255, 255, 0.4);
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-    }
-
-    footer {
-      position: absolute;
-      bottom: 15px;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.8);
-      animation: fadeIn 3s ease;
-    }
-
-    .paw {
-      position: absolute;
-      opacity: 0.1;
-      font-size: 2rem;
-      animation: fall 10s linear infinite;
-    }
-
-    @keyframes gradientShift {
+    @keyframes gradientMove {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    @keyframes shimmer {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+      border-radius: 30px;
+      backdrop-filter: blur(20px);
+      text-align: center;
+      padding: 2.5rem 3rem;
+      max-width: 850px;
+      width: 90%;
+      animation: float 6s ease-in-out infinite;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
+    h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #fff, #ffbdfc, #a5d8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+      animation: glowText 4s ease-in-out infinite alternate;
     }
 
-    @keyframes fall {
-      from { transform: translateY(-10vh) rotate(0deg); }
-      to { transform: translateY(110vh) rotate(360deg); }
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #fff, 0 0 30px #a5d8ff; }
+      to { text-shadow: 0 0 30px #fff, 0 0 60px #ffbdfc; }
+    }
+
+    .typewriter {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #fff;
+      opacity: 0.9;
+      overflow: hidden;
+      border-right: 3px solid #fff;
+      white-space: nowrap;
+      width: 0;
+      animation: typing 5s steps(50, end) forwards, blink 0.7s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #fff; }
+    }
+
+    .description {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #fefefe;
+      opacity: 0.95;
+    }
+
+    .links {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .link-btn {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      background: linear-gradient(90deg, #a5d8ff, #ffbdfc, #ffd6f3);
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+      transition: 0.3s ease;
+      background-size: 200% 100%;
+      animation: buttonShimmer 3s ease-in-out infinite;
+    }
+
+    .link-btn:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
+      background-position: 100% 0;
+    }
+
+    @keyframes buttonShimmer {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 0%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Paws follow the mouse */
+    .paw {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.5rem;
+      opacity: 1;
+      animation: fadeOut 1s forwards;
+      text-shadow: 0 0 10px #fff;
+      filter: drop-shadow(0 0 8px #ffbdfc);
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(1.5); }
     }
 
     @media (max-width: 600px) {
-      h1 { font-size: 2.3rem; }
-      p { font-size: 1rem; }
-      .container { padding: 1.8rem; }
+      h1 { font-size: 2.2rem; }
+      .typewriter, .description { font-size: 1rem; }
+      .container { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Haiii~ Welcome to the Furry Krew! 🐾</h1>
-    <p>
+    <h1>🐾 Welcome to Furry Krew 🩵</h1>
+    <div class="typewriter">Where creativity, fun, and friendship come alive!</div>
+    <p class="description">
       Furry Krew is all about <strong>creativity</strong>, <strong>fun</strong>, and <strong>building strong connections</strong>! 💙  
       We specialize in creating and exploring group worlds where everyone can come together, laugh, and make memories.  
-      Whether you’re new to VRChat or a long-time fur, you’re always welcome here — this is your cozy home away from home! 🌈✨
+      Whether you’re new to VRChat or a long-time fur, you’ll always have a place here. 🌈
     </p>
 
     <div class="links">
-      <div class="link-card">
-        <a href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join us on VRChat</a>
-      </div>
-      <div class="link-card">
-        <a href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
-      </div>
+      <a class="link-btn" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join us on VRChat</a>
+      <a class="link-btn" href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
     </div>
-
-    <button class="music-btn" id="musicToggle">🎵 Play Background Music</button>
   </div>
 
-  <footer>Made with ❤️, paws, and fluff by the Furry Krew</footer>
-
-  <audio id="bgMusic" loop>
-    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Ambient/Kevin_MacLeod_-_Fluidscape.mp3" type="audio/mpeg">
-  </audio>
+  <footer>Made with 💖 paws, and fluff by the Furry Krew</footer>
 
   <script>
-    // Floating paws background
-    const pawIcons = ["🐾", "🐕", "🐈", "💙"];
-    for (let i = 0; i < 20; i++) {
+    // Create glowing paw prints that fade out
+    document.addEventListener('mousemove', e => {
       const paw = document.createElement('div');
-      paw.classList.add('paw');
+      paw.className = 'paw';
+      const pawIcons = ['🐾', '💙', '🌸'];
       paw.textContent = pawIcons[Math.floor(Math.random() * pawIcons.length)];
-      paw.style.left = Math.random() * 100 + 'vw';
-      paw.style.animationDuration = 6 + Math.random() * 10 + 's';
-      paw.style.fontSize = 1 + Math.random() * 2 + 'rem';
+      paw.style.left = `${e.pageX}px`;
+      paw.style.top = `${e.pageY}px`;
       document.body.appendChild(paw);
-    }
 
-    // Music toggle with fade in/out
-    const music = document.getElementById('bgMusic');
-    const toggleBtn = document.getElementById('musicToggle');
-    let playing = false;
-
-    toggleBtn.addEventListener('click', () => {
-      if (!playing) {
-        music.volume = 0;
-        music.play();
-        let vol = 0;
-        const fadeIn = setInterval(() => {
-          if (vol < 0.4) { vol += 0.02; music.volume = vol; }
-          else clearInterval(fadeIn);
-        }, 100);
-        toggleBtn.textContent = "🔇 Stop Music";
-        playing = true;
-      } else {
-        let vol = music.volume;
-        const fadeOut = setInterval(() => {
-          if (vol > 0.02) { vol -= 0.02; music.volume = vol; }
-          else {
-            music.pause();
-            clearInterval(fadeOut);
-          }
-        }, 100);
-        toggleBtn.textContent = "🎵 Play Background Music";
-        playing = false;
-      }
+      setTimeout(() => paw.remove(), 1000);
     });
   </script>
 </body>
