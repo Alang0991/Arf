@@ -6,7 +6,6 @@
   <title>Welcome to Furry Krew 🐾</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Basic setup */
     * {
       margin: 0;
       padding: 0;
@@ -30,25 +29,26 @@
 
     h1 {
       font-size: 3.2rem;
-      text-shadow: 0 0 15px #fff, 0 0 40px #ffbdfc, 0 0 60px #a5d8ff;
+      text-shadow: 0 0 20px #fff, 0 0 40px #ffbdfc, 0 0 60px #a5d8ff;
       animation: float 4s ease-in-out infinite, fadeIn 2s ease;
-    }
-
-    h1 span {
-      color: #ffe5fa;
+      background: linear-gradient(90deg, #fff, #ffe5fa, #a5d8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shimmer 4s linear infinite, float 4s ease-in-out infinite;
     }
 
     p {
       font-size: 1.2rem;
-      margin-top: 1.2rem;
-      color: #fff;
+      margin-top: 1.3rem;
+      max-width: 650px;
       opacity: 0.9;
-      max-width: 600px;
       animation: fadeIn 3s ease;
+      line-height: 1.6;
     }
 
     .links {
-      margin-top: 2.5rem;
+      margin-top: 2.8rem;
       display: flex;
       flex-wrap: wrap;
       gap: 1.5rem;
@@ -80,6 +80,26 @@
       letter-spacing: 0.5px;
     }
 
+    .music-btn {
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      border-radius: 50px;
+      padding: 0.7rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      transition: 0.3s;
+    }
+
+    .music-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+
     footer {
       position: absolute;
       bottom: 15px;
@@ -88,7 +108,6 @@
       animation: fadeIn 4s ease;
     }
 
-    /* Floating Paw Print Animation */
     .paw {
       position: absolute;
       opacity: 0.1;
@@ -96,7 +115,6 @@
       animation: fall 10s linear infinite;
     }
 
-    /* Keyframes */
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
@@ -113,12 +131,16 @@
       100% { background-position: 0% 50%; }
     }
 
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
     @keyframes fall {
       from { transform: translateY(-10vh) rotate(0deg); }
       to { transform: translateY(110vh) rotate(360deg); }
     }
 
-    /* Paw cursor trail */
     .trail {
       position: fixed;
       pointer-events: none;
@@ -131,18 +153,20 @@
       to { opacity: 0; transform: scale(0.5); }
     }
 
-    /* Responsive */
     @media (max-width: 600px) {
-      h1 { font-size: 2.2rem; }
+      h1 { font-size: 2.4rem; }
       p { font-size: 1rem; padding: 0 1rem; }
       .link-card { padding: 0.8rem 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <h1>Haiii~ Welcome to <span>Furry Krew!</span> 🐾</h1>
-  <p>Where fluff, fun, and friendship come together 💕<br>
-  Find your fellow furs and join our cozy community below!</p>
+  <h1>Haiii~ Welcome to the Furry Krew! 🐾</h1>
+  <p>
+    Step into a world full of warmth, laughter, and fluff! 🌈<br>
+    We're a cozy community where every fur belongs — whether you're a puppy, kitty, dragon, or anything in between.<br><br>
+    Come hang out, make friends, and share your adventures with the pack! 💙
+  </p>
 
   <div class="links">
     <div class="link-card">
@@ -153,10 +177,16 @@
     </div>
   </div>
 
-  <footer>Made with ❤️ & fluff by the Furry Krew</footer>
+  <button class="music-btn" id="musicToggle">🎵 Play Background Music</button>
+
+  <footer>Made with ❤️, paws, and fluff by the Furry Krew</footer>
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/16/audio_4e8f0dc7de.mp3?filename=lofi-chill-beat-140191.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
-    // Floating background paws
+    // Floating paws background
     const pawIcons = ["🐾", "🐕", "🐈", "💙"];
     for (let i = 0; i < 20; i++) {
       const paw = document.createElement('div');
@@ -168,7 +198,7 @@
       document.body.appendChild(paw);
     }
 
-    // Mouse trail paw animation
+    // Mouse paw trail
     document.addEventListener('mousemove', e => {
       const trail = document.createElement('div');
       trail.classList.add('trail');
@@ -177,6 +207,36 @@
       trail.style.top = e.pageY + 'px';
       document.body.appendChild(trail);
       setTimeout(() => trail.remove(), 1000);
+    });
+
+    // Music toggle
+    const music = document.getElementById('bgMusic');
+    const toggleBtn = document.getElementById('musicToggle');
+    let playing = false;
+
+    toggleBtn.addEventListener('click', () => {
+      if (!playing) {
+        music.volume = 0;
+        music.play();
+        let vol = 0;
+        const fadeIn = setInterval(() => {
+          if (vol < 0.5) { vol += 0.02; music.volume = vol; }
+          else clearInterval(fadeIn);
+        }, 100);
+        toggleBtn.textContent = "🔇 Stop Music";
+        playing = true;
+      } else {
+        let vol = music.volume;
+        const fadeOut = setInterval(() => {
+          if (vol > 0.02) { vol -= 0.02; music.volume = vol; }
+          else {
+            music.pause();
+            clearInterval(fadeOut);
+          }
+        }, 100);
+        toggleBtn.textContent = "🎵 Play Background Music";
+        playing = false;
+      }
     });
   </script>
 </body>
