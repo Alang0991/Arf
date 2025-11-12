@@ -1,193 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Furry Krew 🐾</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      cursor: url('https://cur.cursors-4u.net/others/oth-6/oth578.cur'), auto;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Furry Krew 🐾</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(120deg,#a5d8ff,#fbc2eb,#ffd6f3);
+  background-size:400% 400%;
+  animation:bgShift 20s ease infinite;
+  color:#fff;
+  position:relative;
+}
+@keyframes bgShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
 
-    body {
-      height: 100vh;
-      background: radial-gradient(circle at 30% 30%, #a5d8ff, #fbc2eb, #ffd6f3);
-      background-size: 400% 400%;
-      animation: gradientMove 15s ease infinite;
-      overflow: hidden;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
+/* particle background */
+canvas#particles{
+  position:absolute;
+  top:0;left:0;width:100%;height:100%;
+  z-index:0;
+  pointer-events:none;
+}
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+/* glass card */
+.container{
+  position:relative;
+  z-index:2;
+  background:rgba(15,15,25,0.8);
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,0.2);
+  box-shadow:0 0 40px rgba(255,255,255,0.2),inset 0 0 20px rgba(255,255,255,0.1);
+  padding:3rem 3.5rem;
+  max-width:850px;width:90%;
+  text-align:center;
+  backdrop-filter:blur(20px);
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-    .container {
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
-      border-radius: 30px;
-      backdrop-filter: blur(20px);
-      text-align: center;
-      padding: 2.5rem 3rem;
-      max-width: 850px;
-      width: 90%;
-      animation: float 6s ease-in-out infinite;
-    }
+h1{
+  font-size:3rem;
+  background:linear-gradient(90deg,#a5d8ff,#ffbdfc,#ffd6f3);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 25px rgba(255,255,255,0.5);
+  animation:glowText 4s ease-in-out infinite alternate;
+}
+@keyframes glowText{
+  from{text-shadow:0 0 15px #a5d8ff,0 0 25px #ffbdfc;}
+  to{text-shadow:0 0 30px #fff,0 0 60px #ffd6f3;}
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+/* typing effect */
+.typewriter{
+  margin-top:1.2rem;
+  font-size:1.15rem;
+  border-right:3px solid #fff;
+  white-space:nowrap;
+  overflow:hidden;
+  width:0;
+  animation:typing 5s steps(50,end) forwards,blink 0.7s infinite;
+}
+@keyframes typing{to{width:100%}}
+@keyframes blink{50%{border-color:transparent}}
 
-    h1 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, #fff, #ffbdfc, #a5d8ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
-      animation: glowText 4s ease-in-out infinite alternate;
-    }
+.description{
+  margin-top:1.2rem;
+  font-size:1.05rem;
+  color:#e8e8e8;
+  line-height:1.6;
+}
 
-    @keyframes glowText {
-      from { text-shadow: 0 0 10px #fff, 0 0 30px #a5d8ff; }
-      to { text-shadow: 0 0 30px #fff, 0 0 60px #ffbdfc; }
-    }
+.links{
+  margin-top:2.3rem;
+  display:flex;flex-wrap:wrap;gap:1.3rem;justify-content:center;
+}
 
-    .typewriter {
-      margin-top: 1.5rem;
-      font-size: 1.2rem;
-      color: #fff;
-      opacity: 0.9;
-      overflow: hidden;
-      border-right: 3px solid #fff;
-      white-space: nowrap;
-      width: 0;
-      animation: typing 5s steps(50, end) forwards, blink 0.7s infinite;
-    }
+.link-btn{
+  text-decoration:none;
+  color:#fff;
+  font-weight:600;
+  padding:0.9rem 2.4rem;
+  border-radius:50px;
+  background:linear-gradient(90deg,#a5d8ff,#ffbdfc,#ffd6f3);
+  background-size:200% 100%;
+  box-shadow:0 0 25px rgba(255,255,255,0.3);
+  transition:all 0.4s ease;
+}
+.link-btn:hover{
+  transform:scale(1.08);
+  background-position:100% 0;
+  box-shadow:0 0 40px rgba(255,255,255,0.6);
+}
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
+footer{
+  position:absolute;
+  bottom:10px;
+  color:rgba(255,255,255,0.7);
+  font-size:0.9rem;
+  z-index:2;
+}
 
-    @keyframes blink {
-      0%, 100% { border-color: transparent; }
-      50% { border-color: #fff; }
-    }
+/* paw trail */
+.paw{
+  position:fixed;
+  pointer-events:none;
+  font-size:1.5rem;
+  opacity:1;
+  animation:pawFade 1.2s forwards;
+  text-shadow:0 0 10px #fff;
+  filter:drop-shadow(0 0 8px #ffbdfc);
+  z-index:3;
+}
+@keyframes pawFade{
+  from{opacity:1;transform:scale(1);}
+  to{opacity:0;transform:scale(1.5);}
+}
 
-    .description {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #fefefe;
-      opacity: 0.95;
-    }
-
-    .links {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .link-btn {
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      background: linear-gradient(90deg, #a5d8ff, #ffbdfc, #ffd6f3);
-      padding: 0.9rem 2.2rem;
-      border-radius: 50px;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
-      transition: 0.3s ease;
-      background-size: 200% 100%;
-      animation: buttonShimmer 3s ease-in-out infinite;
-    }
-
-    .link-btn:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
-      background-position: 100% 0;
-    }
-
-    @keyframes buttonShimmer {
-      0% { background-position: 0% 0%; }
-      50% { background-position: 100% 0%; }
-      100% { background-position: 0% 0%; }
-    }
-
-    footer {
-      position: absolute;
-      bottom: 10px;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    /* Paws follow the mouse */
-    .paw {
-      position: fixed;
-      pointer-events: none;
-      font-size: 1.5rem;
-      opacity: 1;
-      animation: fadeOut 1s forwards;
-      text-shadow: 0 0 10px #fff;
-      filter: drop-shadow(0 0 8px #ffbdfc);
-    }
-
-    @keyframes fadeOut {
-      from { opacity: 1; transform: scale(1); }
-      to { opacity: 0; transform: scale(1.5); }
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2.2rem; }
-      .typewriter, .description { font-size: 1rem; }
-      .container { padding: 2rem 1.5rem; }
-    }
-  </style>
+@media(max-width:600px){
+  h1{font-size:2.2rem;}
+  .typewriter,.description{font-size:1rem;}
+  .container{padding:2rem;}
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>🐾 Welcome to Furry Krew 🩵</h1>
-    <div class="typewriter">Where creativity, fun, and friendship come alive!</div>
-    <p class="description">
-      Furry Krew is all about <strong>creativity</strong>, <strong>fun</strong>, and <strong>building strong connections</strong>! 💙  
-      We specialize in creating and exploring group worlds where everyone can come together, laugh, and make memories.  
-      Whether you’re new to VRChat or a long-time fur, you’ll always have a place here. 🌈
-    </p>
+<canvas id="particles"></canvas>
 
-    <div class="links">
-      <a class="link-btn" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join us on VRChat</a>
-      <a class="link-btn" href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
-    </div>
+<div class="container">
+  <h1>🐾 Welcome to Furry Krew</h1>
+  <div class="typewriter">Where creativity, fun, and friendship come alive!</div>
+  <p class="description">
+    Furry Krew is all about <strong>creativity</strong>, <strong>fun</strong>, and <strong>building strong connections</strong>! 💙  
+    We specialize in creating and exploring group worlds where everyone can come together, laugh, and make memories.  
+    Whether you’re new to VRChat or a long-time fur, you’ll always have a place here. 🌈
+  </p>
+  <div class="links">
+    <a class="link-btn" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join us on VRChat</a>
+    <a class="link-btn" href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
   </div>
+</div>
 
-  <footer>Made with 💖 paws, and fluff by the Furry Krew</footer>
+<footer>Made with 💖 paws and fluff by the Furry Krew</footer>
 
-  <script>
-    // Create glowing paw prints that fade out
-    document.addEventListener('mousemove', e => {
-      const paw = document.createElement('div');
-      paw.className = 'paw';
-      const pawIcons = ['🐾', '💙', '🌸'];
-      paw.textContent = pawIcons[Math.floor(Math.random() * pawIcons.length)];
-      paw.style.left = `${e.pageX}px`;
-      paw.style.top = `${e.pageY}px`;
-      document.body.appendChild(paw);
+<script>
+/* paw trail */
+document.addEventListener('mousemove',e=>{
+  const paw=document.createElement('div');
+  paw.className='paw';
+  paw.textContent=['🐾','💙','🌸'][Math.floor(Math.random()*3)];
+  paw.style.left=e.pageX+'px';
+  paw.style.top=e.pageY+'px';
+  document.body.appendChild(paw);
+  setTimeout(()=>paw.remove(),1200);
+});
 
-      setTimeout(() => paw.remove(), 1000);
-    });
-  </script>
+/* floating particles */
+const c=document.getElementById('particles');
+const ctx=c.getContext('2d');
+let w,h,particles=[];
+function resize(){w=c.width=innerWidth;h=c.height=innerHeight;}
+window.addEventListener('resize',resize);
+resize();
+for(let i=0;i<80;i++){
+  particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+0.5,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4});
+}
+function draw(){
+  ctx.clearRect(0,0,w,h);
+  ctx.fillStyle='rgba(255,255,255,0.6)';
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.x+=p.dx;p.y+=p.dy;
+    if(p.x<0||p.x>w)p.dx*=-1;
+    if(p.y<0||p.y>h)p.dy*=-1;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
 </body>
 </html>
