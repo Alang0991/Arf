@@ -6,6 +6,7 @@
   <title>Welcome to Furry Krew 🐾</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Basic setup */
     * {
       margin: 0;
       padding: 0;
@@ -14,71 +15,69 @@
     }
 
     body {
-      background: linear-gradient(135deg, #a8c0ff, #fbc2eb);
-      color: #fff;
+      background: linear-gradient(135deg, #a5d8ff, #fbc2eb, #ffd6f3);
+      background-size: 300% 300%;
+      animation: gradientShift 12s ease infinite;
       height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      color: #fff;
+      text-align: center;
     }
 
     h1 {
-      font-size: 3rem;
-      text-shadow: 0 0 20px #fff, 0 0 40px #ffb6f9;
-      animation: float 3s ease-in-out infinite;
+      font-size: 3.2rem;
+      text-shadow: 0 0 15px #fff, 0 0 40px #ffbdfc, 0 0 60px #a5d8ff;
+      animation: float 4s ease-in-out infinite, fadeIn 2s ease;
+    }
+
+    h1 span {
+      color: #ffe5fa;
     }
 
     p {
       font-size: 1.2rem;
-      margin-top: 1rem;
-      text-align: center;
+      margin-top: 1.2rem;
+      color: #fff;
+      opacity: 0.9;
       max-width: 600px;
-      color: #f9f9f9;
+      animation: fadeIn 3s ease;
     }
 
     .links {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       display: flex;
-      gap: 1.5rem;
       flex-wrap: wrap;
+      gap: 1.5rem;
       justify-content: center;
+      animation: fadeIn 3.5s ease;
     }
 
-    a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      backdrop-filter: blur(10px);
+    .link-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 1rem 2rem;
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
-    a:hover {
-      background: rgba(255, 255, 255, 0.4);
-      transform: scale(1.08);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    .link-card:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.25);
     }
 
-    .paw {
-      position: absolute;
-      font-size: 2rem;
-      opacity: 0.1;
-      animation: fall 10s linear infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes fall {
-      from { transform: translateY(-10vh) rotate(0deg); }
-      to { transform: translateY(110vh) rotate(360deg); }
+    .link-card a {
+      color: #fff;
+      font-size: 1.1rem;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     footer {
@@ -86,35 +85,99 @@
       bottom: 15px;
       font-size: 0.9rem;
       color: rgba(255, 255, 255, 0.8);
+      animation: fadeIn 4s ease;
+    }
+
+    /* Floating Paw Print Animation */
+    .paw {
+      position: absolute;
+      opacity: 0.1;
+      font-size: 2rem;
+      animation: fall 10s linear infinite;
+    }
+
+    /* Keyframes */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-10vh) rotate(0deg); }
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* Paw cursor trail */
+    .trail {
+      position: fixed;
+      pointer-events: none;
+      animation: fadeOut 1s forwards;
+      font-size: 1.5rem;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(0.5); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      p { font-size: 1rem; padding: 0 1rem; }
+      .link-card { padding: 0.8rem 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <h1>Haiii~ Welcome to <span style="color:#ffe5fa;">Furry Krew!</span> 🐾</h1>
-  <p>
-    This is your cozy corner of fluff, fun, and friendship!  
-    Use the links below to join our community and hang out with other furs! 🌸
-  </p>
+  <h1>Haiii~ Welcome to <span>Furry Krew!</span> 🐾</h1>
+  <p>Where fluff, fun, and friendship come together 💕<br>
+  Find your fellow furs and join our cozy community below!</p>
 
   <div class="links">
-    <a href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join on VRChat</a>
-    <a href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
+    <div class="link-card">
+      <a href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join us on VRChat</a>
+    </div>
+    <div class="link-card">
+      <a href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
+    </div>
   </div>
 
-  <footer>Made with ❤️ by the Furry Krew</footer>
+  <footer>Made with ❤️ & fluff by the Furry Krew</footer>
 
   <script>
-    // Create cute falling paw prints
-    const paws = ["🐾", "🐕", "🐈", "💙"];
+    // Floating background paws
+    const pawIcons = ["🐾", "🐕", "🐈", "💙"];
     for (let i = 0; i < 20; i++) {
       const paw = document.createElement('div');
       paw.classList.add('paw');
-      paw.textContent = paws[Math.floor(Math.random() * paws.length)];
+      paw.textContent = pawIcons[Math.floor(Math.random() * pawIcons.length)];
       paw.style.left = Math.random() * 100 + 'vw';
-      paw.style.animationDuration = 5 + Math.random() * 10 + 's';
+      paw.style.animationDuration = 6 + Math.random() * 10 + 's';
       paw.style.fontSize = 1 + Math.random() * 2 + 'rem';
       document.body.appendChild(paw);
     }
+
+    // Mouse trail paw animation
+    document.addEventListener('mousemove', e => {
+      const trail = document.createElement('div');
+      trail.classList.add('trail');
+      trail.textContent = '🐾';
+      trail.style.left = e.pageX + 'px';
+      trail.style.top = e.pageY + 'px';
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 1000);
+    });
   </script>
 </body>
 </html>
