@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,184 +23,48 @@ body{
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
-}
+}canvas#particles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 
-/* particles */
-canvas#particles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.container{ position:relative; z-index:2; background:rgba(15,15,25,0.85); border-radius:25px; border:1px solid rgba(255,255,255,0.2); box-shadow:0 0 40px rgba(255,255,255,0.2),inset 0 0 20px rgba(255,255,255,0.1); padding:1.5rem; max-width:95%; width:90%; text-align:center; backdrop-filter:blur(20px); animation:float 6s ease-in-out infinite; transition:background 0.5s; } @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-/* container */
-.container{
-  position:relative;
-  z-index:2;
-  background:rgba(15,15,25,0.8);
-  border-radius:30px;
-  border:1px solid rgba(255,255,255,0.2);
-  box-shadow:0 0 40px rgba(255,255,255,0.2),inset 0 0 20px rgba(255,255,255,0.1);
-  padding:2rem;
-  max-width:95%;
-  width:90%;
-  text-align:center;
-  backdrop-filter:blur(20px);
-  animation:float 6s ease-in-out infinite;
-  transition:background 0.5s;
-}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+h1{ font-size:clamp(1.5rem,5vw,2.5rem); background:linear-gradient(90deg,#a5d8ff,#ffbdfc,#ffd6f3); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 20px rgba(255,255,255,0.5); animation:glowText 4s ease-in-out infinite alternate; } @keyframes glowText{ from{text-shadow:0 0 15px #a5d8ff,0 0 25px #ffbdfc;} to{text-shadow:0 0 30px #fff,0 0 60px #ffd6f3;} }
 
-h1{
-  font-size:clamp(1.8rem,5vw,3rem);
-  background:linear-gradient(90deg,#a5d8ff,#ffbdfc,#ffd6f3);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 25px rgba(255,255,255,0.5);
-  animation:glowText 4s ease-in-out infinite alternate;
-}
-@keyframes glowText{
-  from{text-shadow:0 0 15px #a5d8ff,0 0 25px #ffbdfc;}
-  to{text-shadow:0 0 30px #fff,0 0 60px #ffd6f3;}
-}
+.typewriter{ margin-top:0.8rem; font-size:clamp(0.9rem,4vw,1.1rem); border-right:3px solid #fff; white-space:nowrap; overflow:hidden; width:0; animation:typing 5s steps(50,end) forwards,blink 0.7s infinite; } @keyframes typing{to{width:100%}} @keyframes blink{50%{border-color:transparent}}
 
-/* typewriter */
-.typewriter{
-  margin-top:1rem;
-  font-size:clamp(1rem,4vw,1.2rem);
-  border-right:3px solid #fff;
-  white-space:nowrap;
-  overflow:hidden;
-  width:0;
-  animation:typing 5s steps(50,end) forwards,blink 0.7s infinite;
-}
-@keyframes typing{to{width:100%}}
-@keyframes blink{50%{border-color:transparent}}
+.description{ margin-top:0.8rem; font-size:clamp(0.8rem,3.5vw,1rem); line-height:1.4; color:#e8e8e8; }
 
-.description{
-  margin-top:1rem;
-  font-size:clamp(0.9rem,3.5vw,1.05rem);
-  line-height:1.5;
-  color:#e8e8e8;
-}
+.links{ margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; } .link-btn{ text-decoration:none; color:#fff; font-weight:600; padding:0.7rem 1.8rem; border-radius:50px; background:linear-gradient(90deg,#a5d8ff,#ffbdfc,#ffd6f3); background-size:200% 100%; box-shadow:0 0 20px rgba(255,255,255,0.3); transition:all 0.3s ease; text-align:center; font-size:clamp(0.9rem,3vw,1rem); } .link-btn:hover{ transform:scale(1.05); background-position:100% 0; box-shadow:0 0 35px rgba(255,255,255,0.6); }
 
-/* buttons */
-.links{
-  margin-top:2rem;
-  display:flex;
-  flex-wrap:wrap;
-  gap:1rem;
-  justify-content:center;
-}
-.link-btn{
-  text-decoration:none;
-  color:#fff;
-  font-weight:600;
-  padding:0.8rem 2rem;
-  border-radius:50px;
-  background:linear-gradient(90deg,#a5d8ff,#ffbdfc,#ffd6f3);
-  background-size:200% 100%;
-  box-shadow:0 0 25px rgba(255,255,255,0.3);
-  transition:all 0.4s ease;
-  text-align:center;
-}
-.link-btn:hover{
-  transform:scale(1.05);
-  background-position:100% 0;
-  box-shadow:0 0 40px rgba(255,255,255,0.6);
-}
+footer{ position:absolute; bottom:8px; color:rgba(255,255,255,0.7); font-size:0.8rem; z-index:2; }
 
-/* footer */
-footer{
-  position:absolute;
-  bottom:10px;
-  color:rgba(255,255,255,0.7);
-  font-size:0.9rem;
-  z-index:2;
-}
+.paw{ position:fixed; pointer-events:none; font-size:1.3rem; opacity:1; animation:pawFade 1.2s forwards; text-shadow:0 0 8px #fff; filter:drop-shadow(0 0 6px #ffbdfc); z-index:3; } @keyframes pawFade{ from{opacity:1;transform:scale(1);} to{opacity:0;transform:scale(1.5);} }
 
-/* paw trail */
-.paw{
-  position:fixed;
-  pointer-events:none;
-  font-size:1.5rem;
-  opacity:1;
-  animation:pawFade 1.2s forwards;
-  text-shadow:0 0 10px #fff;
-  filter:drop-shadow(0 0 8px #ffbdfc);
-  z-index:3;
-}
-@keyframes pawFade{
-  from{opacity:1;transform:scale(1);}
-  to{opacity:0;transform:scale(1.5);}
-}
+body.dark-mode{ background:#111119; } body.dark-mode .container{ background:rgba(25,25,35,0.85); } body.dark-mode .link-btn{ background:linear-gradient(90deg,#5555ff,#ff88ff,#ff88cc); }
 
-/* dark mode */
-body.dark-mode{
-  background:#111119;
-}
-body.dark-mode .container{
-  background:rgba(25,25,35,0.85);
-}
-body.dark-mode .link-btn{
-  background:linear-gradient(90deg,#5555ff,#ff88ff,#ff88cc);
-}
+#darkModeToggle{ position:absolute; top:12px; right:12px; background:rgba(255,255,255,0.2); color:#fff; border:none; border-radius:25px; padding:0.4rem 0.9rem; cursor:pointer; backdrop-filter:blur(10px); box-shadow:0 0 8px rgba(255,255,255,0.3); transition:0.3s; font-size:0.85rem; }
 
-/* dark mode button */
-#darkModeToggle{
-  position:absolute;
-  top:15px; right:15px;
-  background:rgba(255,255,255,0.2);
-  color:#fff;
-  border:none;
-  border-radius:25px;
-  padding:0.5rem 1rem;
-  cursor:pointer;
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 10px rgba(255,255,255,0.3);
-  transition:0.3s;
-  font-size:0.9rem;
-}
+#digitalClock{ margin-top:1.2rem; font-size:clamp(0.8rem,3vw,1.1rem); font-weight:600; color:#fff; text-shadow:0 0 8px rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); padding:0.4rem 0.9rem; border-radius:12px; display:inline-block; box-shadow:0 0 12px rgba(255,255,255,0.3); }
 
-/* digital clock */
-#digitalClock{
-  margin-top:1.5rem;
-  font-size:clamp(0.9rem,3vw,1.2rem);
-  font-weight:600;
-  color:#fff;
-  text-shadow:0 0 10px rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.1);
-  padding:0.5rem 1rem;
-  border-radius:15px;
-  display:inline-block;
-  box-shadow:0 0 15px rgba(255,255,255,0.3);
-}
+@media(max-width:600px){ .links{flex-direction:column;} .link-btn{width:100%; padding:0.7rem; font-size:1rem;} } </style>
 
-/* responsive adjustments */
-@media(max-width:480px){
-  .links{flex-direction:column;}
-  .link-btn{width:100%; padding:0.8rem; font-size:1rem;}
-}
-</style>
 </head>
 <body>
-<canvas id="particles"></canvas>
-
-<div class="container">
+<canvas id="particles"></canvas><div class="container">
   <button id="darkModeToggle">🌙 Dark Mode</button>
   <h1>🐾 Welcome to Furry Krew</h1>
   <div class="typewriter">Where creativity, fun, and friendship come alive!</div>
   <p class="description">
-    Furry Krew is all about <strong>creativity</strong>, <strong>fun</strong>, and <strong>building strong connections</strong>! 💙  
-    We specialize in creating and exploring group worlds where everyone can come together, laugh, and make memories.  
+    Furry Krew is all about <strong>creativity</strong>, <strong>fun</strong>, and <strong>building strong connections</strong>! 💙<br>
+    We specialize in creating and exploring group worlds where everyone can come together, laugh, and make memories.<br>
     Whether you’re new to VRChat or a long-time fur, you’ll always have a place here. 🌈
-  </p>
-  <div class="links">
+  </p>  <div class="links">
     <a class="link-btn" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join us on VRChat</a>
     <a class="link-btn" href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
-  </div>
-  <div id="digitalClock"></div>
-</div>
-
-<footer>Made with 💖 paws and fluff by the Furry Krew</footer>
-
-<script>
-// paw trail
+    <a class="link-btn" href="https://x.com/FKrew48811" target="_blank">🐦 Follow us on X</a>
+    <a class="link-btn" href="https://www.tiktok.com/@furry_krew" target="_blank">🎵 TikTok</a>
+  </div>  <div id="digitalClock"></div>
+</div><footer>Made with 💖 paws and fluff by the Furry Krew</footer><script>
+// Paw trail effect
 document.addEventListener('mousemove', e => {
   const paw = document.createElement('div');
   paw.className = 'paw';
@@ -212,14 +75,14 @@ document.addEventListener('mousemove', e => {
   setTimeout(()=>paw.remove(),1200);
 });
 
-// dark mode toggle
+// Dark mode toggle
 const darkToggle = document.getElementById('darkModeToggle');
 darkToggle.addEventListener('click', ()=>{
   document.body.classList.toggle('dark-mode');
   darkToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
 });
 
-// particles
+// Particles animation
 const c = document.getElementById('particles');
 const ctx = c.getContext('2d');
 let w,h,particles=[];
@@ -245,7 +108,7 @@ function draw(){
 }
 draw();
 
-// digital clock
+// Digital clock
 function updateDigitalClock(){
   const now = new Date();
   const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
@@ -255,6 +118,5 @@ function updateDigitalClock(){
 }
 setInterval(updateDigitalClock,1000);
 updateDigitalClock();
-</script>
-</body>
+</script></body>
 </html>
