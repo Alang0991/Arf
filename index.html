@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Furry Krew // Neon Den</title>
+<title>Furry Krew</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -25,7 +25,7 @@ body{
   color:#fff;
 }
 
-/* animated aurora blobs */
+/* glow blobs */
 .blob{
   position:absolute;
   width:400px;
@@ -36,29 +36,16 @@ body{
   animation:float 10s infinite ease-in-out;
 }
 
-.blob.one{
-  background:#00f5ff;
-  top:-100px;
-  left:-100px;
-}
-.blob.two{
-  background:#ff4fd8;
-  bottom:-120px;
-  right:-120px;
-}
-.blob.three{
-  background:#ffd36a;
-  top:40%;
-  left:60%;
-  animation-delay:2s;
-}
+.blob.one{ background:#00f5ff; top:-100px; left:-100px; }
+.blob.two{ background:#ff4fd8; bottom:-120px; right:-120px; }
+.blob.three{ background:#ffd36a; top:40%; left:60%; animation-delay:2s; }
 
 @keyframes float{
   0%,100%{transform:translate(0,0);}
   50%{transform:translate(40px,-30px);}
 }
 
-/* main hub */
+/* main panel */
 .panel{
   width:min(92%,950px);
   padding:2rem;
@@ -70,7 +57,7 @@ body{
   position:relative;
 }
 
-/* scan sweep */
+/* scan effect */
 .panel::before{
   content:"";
   position:absolute;
@@ -85,6 +72,7 @@ body{
   100%{transform:translateX(100%);}
 }
 
+/* header */
 .header{
   display:flex;
   justify-content:space-between;
@@ -101,15 +89,18 @@ body{
   -webkit-text-fill-color:transparent;
 }
 
+/* FIXED status pill (clean, no lore) */
 .status{
   font-size:0.75rem;
   padding:6px 12px;
-  border:1px solid rgba(255,255,255,0.15);
   border-radius:999px;
-  opacity:0.8;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.04);
+  opacity:0.85;
+  letter-spacing:0.5px;
 }
 
-/* lore block */
+/* description */
 .lore{
   margin-top:1rem;
   font-size:clamp(0.85rem,3vw,1rem);
@@ -119,7 +110,7 @@ body{
   padding-left:12px;
 }
 
-/* command grid */
+/* links */
 .grid{
   margin-top:1.5rem;
   display:grid;
@@ -148,7 +139,6 @@ body{
   .grid{grid-template-columns:1fr;}
 }
 
-/* footer terminal vibe */
 .footer{
   margin-top:1.5rem;
   font-size:0.7rem;
@@ -156,7 +146,6 @@ body{
   text-align:center;
 }
 </style>
-
 </head>
 
 <body>
@@ -169,24 +158,21 @@ body{
 
   <div class="header">
     <div class="title">🐾 Furry Krew</div>
-    <div class="status">NEON DEN NETWORK • ONLINE</div>
+    <div class="status">NETWORK • ONLINE</div>
   </div>
 
   <div class="lore">
-    You’ve entered the <strong>Furry Krew Neon Den</strong> — a connected VRChat network built for social worlds, creative chaos, and late-night hangouts.
-    Every member is part of the same signal.
+    Welcome to <strong>Furry Krew</strong> — a VRChat community built for social worlds, creativity, and hanging out with friends.
   </div>
 
   <div class="grid">
-    <a class="card" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486">🌐 Join VRChat Hub</a>
-    <a class="card" href="https://discord.gg/Y7rNaHzq3e">💬 Enter Discord Relay</a>
-    <a class="card" href="https://x.com/FKrew48811">🐦 Signal Feed (X)</a>
-    <a class="card" href="https://www.tiktok.com/@furry_krew">🎵 Memory Clips</a>
+    <a class="card" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486">🌐 VRChat Group</a>
+    <a class="card" href="https://discord.gg/Y7rNaHzq3e">💬 Discord</a>
+    <a class="card" href="https://x.com/FKrew48811">🐦 X / Twitter</a>
+    <a class="card" href="https://www.tiktok.com/@furry_krew">🎵 TikTok</a>
   </div>
 
-  <div class="footer">
-    Furry Krew // Neon Den System
-  </div>
+  <div class="footer">Furry Krew</div>
 
 </div>
 
