@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Furry Krew 🐾</title>
+<title>Furry Krew // Neon Den</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -20,109 +20,140 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  background: radial-gradient(circle at top,#0b1020,#05060a);
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* subtle grid */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size:40px 40px;
-  opacity:0.15;
-  pointer-events:none;
-}
-
-/* main card */
-.container{
-  width:min(92%,900px);
-  padding:2rem;
-  border-radius:24px;
-  background:rgba(15,18,30,0.85);
-  border:1px solid rgba(0,255,255,0.15);
-  box-shadow:0 0 40px rgba(0,255,255,0.15);
-  text-align:center;
-  backdrop-filter:blur(18px);
-  position:relative;
+  background:#05060a;
   overflow:hidden;
+  color:#fff;
 }
 
-/* scan line */
-.container::after{
+/* animated aurora blobs */
+.blob{
+  position:absolute;
+  width:400px;
+  height:400px;
+  filter:blur(120px);
+  opacity:0.25;
+  border-radius:50%;
+  animation:float 10s infinite ease-in-out;
+}
+
+.blob.one{
+  background:#00f5ff;
+  top:-100px;
+  left:-100px;
+}
+.blob.two{
+  background:#ff4fd8;
+  bottom:-120px;
+  right:-120px;
+}
+.blob.three{
+  background:#ffd36a;
+  top:40%;
+  left:60%;
+  animation-delay:2s;
+}
+
+@keyframes float{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(40px,-30px);}
+}
+
+/* main hub */
+.panel{
+  width:min(92%,950px);
+  padding:2rem;
+  border-radius:22px;
+  background:rgba(10,12,18,0.75);
+  border:1px solid rgba(0,255,255,0.15);
+  backdrop-filter:blur(18px);
+  box-shadow:0 0 60px rgba(0,255,255,0.08);
+  position:relative;
+}
+
+/* scan sweep */
+.panel::before{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(transparent,rgba(0,255,255,0.08),transparent);
-  animation:scan 5s linear infinite;
+  background:linear-gradient(120deg,transparent,rgba(0,255,255,0.08),transparent);
+  transform:translateX(-100%);
+  animation:sweep 6s infinite;
 }
-@keyframes scan{
-  0%{transform:translateY(-100%);}
-  100%{transform:translateY(100%);}
+@keyframes sweep{
+  0%{transform:translateX(-100%);}
+  50%{transform:translateX(100%);}
+  100%{transform:translateX(100%);}
 }
 
-h1{
-  font-size:clamp(1.8rem,5vw,2.8rem);
-  background:linear-gradient(90deg,#7df9ff,#ff7de9,#ffd36a);
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.title{
+  font-size:clamp(1.6rem,4vw,2.6rem);
+  font-weight:700;
+  background:linear-gradient(90deg,#7df9ff,#ff4fd8,#ffd36a);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  margin-bottom:0.5rem;
 }
 
-.tagline{
-  font-size:clamp(0.9rem,3vw,1.1rem);
-  opacity:0.9;
-  margin-bottom:1.5rem;
+.status{
+  font-size:0.75rem;
+  padding:6px 12px;
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:999px;
+  opacity:0.8;
 }
 
-.description{
-  font-size:clamp(0.85rem,2.8vw,1rem);
+/* lore block */
+.lore{
+  margin-top:1rem;
+  font-size:clamp(0.85rem,3vw,1rem);
   line-height:1.6;
   opacity:0.85;
-  margin-bottom:1.5rem;
+  border-left:3px solid rgba(0,255,255,0.4);
+  padding-left:12px;
 }
 
-/* buttons */
-.links{
+/* command grid */
+.grid{
+  margin-top:1.5rem;
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:12px;
-  margin-top:1.5rem;
 }
 
-.link-btn{
-  padding:0.9rem;
+.card{
+  padding:14px;
   border-radius:14px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  transition:0.25s;
   text-decoration:none;
   color:#fff;
-  font-weight:600;
-  border:1px solid rgba(255,255,255,0.15);
-  background:rgba(255,255,255,0.05);
-  transition:0.25s ease;
-  backdrop-filter:blur(10px);
 }
 
-.link-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 20px rgba(125,249,255,0.25);
+.card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(0,255,255,0.3);
+  box-shadow:0 0 20px rgba(0,255,255,0.15);
 }
 
-/* mobile fix */
-@media(max-width:600px){
-  .links{
-    grid-template-columns:1fr;
-  }
+/* mobile */
+@media(max-width:650px){
+  .grid{grid-template-columns:1fr;}
 }
 
-/* footer */
-footer{
+/* footer terminal vibe */
+.footer{
   margin-top:1.5rem;
-  font-size:0.75rem;
-  opacity:0.6;
+  font-size:0.7rem;
+  opacity:0.5;
+  text-align:center;
 }
 </style>
 
@@ -130,23 +161,33 @@ footer{
 
 <body>
 
-<div class="container">
-  <h1>🐾 Furry Krew</h1>
-  <div class="tagline">Neon paws • friendships • VRChat worlds</div>
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
 
-  <div class="description">
-    Welcome to <strong>Furry Krew</strong> — a creative VRChat community built for hanging out, exploring worlds, and making friends.
-    Whether you're new or experienced, this is your space to vibe, build memories, and be yourself.
+<div class="panel">
+
+  <div class="header">
+    <div class="title">🐾 Furry Krew</div>
+    <div class="status">NEON DEN NETWORK • ONLINE</div>
   </div>
 
-  <div class="links">
-    <a class="link-btn" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 VRChat Group</a>
-    <a class="link-btn" href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Discord</a>
-    <a class="link-btn" href="https://x.com/FKrew48811" target="_blank">🐦 X / Twitter</a>
-    <a class="link-btn" href="https://www.tiktok.com/@furry_krew" target="_blank">🎵 TikTok</a>
+  <div class="lore">
+    You’ve entered the <strong>Furry Krew Neon Den</strong> — a connected VRChat network built for social worlds, creative chaos, and late-night hangouts.
+    Every member is part of the same signal.
   </div>
 
-  <footer>Made with 🐾 by Furry Krew</footer>
+  <div class="grid">
+    <a class="card" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486">🌐 Join VRChat Hub</a>
+    <a class="card" href="https://discord.gg/Y7rNaHzq3e">💬 Enter Discord Relay</a>
+    <a class="card" href="https://x.com/FKrew48811">🐦 Signal Feed (X)</a>
+    <a class="card" href="https://www.tiktok.com/@furry_krew">🎵 Memory Clips</a>
+  </div>
+
+  <div class="footer">
+    Furry Krew // Neon Den System
+  </div>
+
 </div>
 
 </body>
