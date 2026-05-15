@@ -1,122 +1,153 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Furry Krew 🐾</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
 body{
-  height:100vh;
-  overflow:hidden;
+  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(120deg,#a5d8ff,#fbc2eb,#ffd6f3);
-  background-size:400% 400%;
-  animation:bgShift 20s ease infinite;
+  background: radial-gradient(circle at top,#0b1020,#05060a);
   color:#fff;
-  position:relative;
-  transition:background 0.5s;
+  overflow-x:hidden;
 }
-@keyframes bgShift{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}canvas#particles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 
-.container{ position:relative; z-index:2; background:rgba(15,15,25,0.85); border-radius:25px; border:1px solid rgba(255,255,255,0.2); box-shadow:0 0 40px rgba(255,255,255,0.2),inset 0 0 20px rgba(255,255,255,0.1); padding:1.5rem; max-width:95%; width:90%; text-align:center; backdrop-filter:blur(20px); animation:float 6s ease-in-out infinite; transition:background 0.5s; } @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* subtle grid */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:40px 40px;
+  opacity:0.15;
+  pointer-events:none;
+}
 
-h1{ font-size:clamp(1.5rem,5vw,2.5rem); background:linear-gradient(90deg,#a5d8ff,#ffbdfc,#ffd6f3); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 20px rgba(255,255,255,0.5); animation:glowText 4s ease-in-out infinite alternate; } @keyframes glowText{ from{text-shadow:0 0 15px #a5d8ff,0 0 25px #ffbdfc;} to{text-shadow:0 0 30px #fff,0 0 60px #ffd6f3;} }
+/* main card */
+.container{
+  width:min(92%,900px);
+  padding:2rem;
+  border-radius:24px;
+  background:rgba(15,18,30,0.85);
+  border:1px solid rgba(0,255,255,0.15);
+  box-shadow:0 0 40px rgba(0,255,255,0.15);
+  text-align:center;
+  backdrop-filter:blur(18px);
+  position:relative;
+  overflow:hidden;
+}
 
-.typewriter{ margin-top:0.8rem; font-size:clamp(0.9rem,4vw,1.1rem); border-right:3px solid #fff; white-space:nowrap; overflow:hidden; width:0; animation:typing 5s steps(50,end) forwards,blink 0.7s infinite; } @keyframes typing{to{width:100%}} @keyframes blink{50%{border-color:transparent}}
+/* scan line */
+.container::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent,rgba(0,255,255,0.08),transparent);
+  animation:scan 5s linear infinite;
+}
+@keyframes scan{
+  0%{transform:translateY(-100%);}
+  100%{transform:translateY(100%);}
+}
 
-.description{ margin-top:0.8rem; font-size:clamp(0.8rem,3.5vw,1rem); line-height:1.4; color:#e8e8e8; }
+h1{
+  font-size:clamp(1.8rem,5vw,2.8rem);
+  background:linear-gradient(90deg,#7df9ff,#ff7de9,#ffd36a);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:0.5rem;
+}
 
-.links{ margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; } .link-btn{ text-decoration:none; color:#fff; font-weight:600; padding:0.7rem 1.8rem; border-radius:50px; background:linear-gradient(90deg,#a5d8ff,#ffbdfc,#ffd6f3); background-size:200% 100%; box-shadow:0 0 20px rgba(255,255,255,0.3); transition:all 0.3s ease; text-align:center; font-size:clamp(0.9rem,3vw,1rem); } .link-btn:hover{ transform:scale(1.05); background-position:100% 0; box-shadow:0 0 35px rgba(255,255,255,0.6); }
+.tagline{
+  font-size:clamp(0.9rem,3vw,1.1rem);
+  opacity:0.9;
+  margin-bottom:1.5rem;
+}
 
-footer{ position:absolute; bottom:8px; color:rgba(255,255,255,0.7); font-size:0.8rem; z-index:2; }
+.description{
+  font-size:clamp(0.85rem,2.8vw,1rem);
+  line-height:1.6;
+  opacity:0.85;
+  margin-bottom:1.5rem;
+}
 
-.paw{ position:fixed; pointer-events:none; font-size:1.3rem; opacity:1; animation:pawFade 1.2s forwards; text-shadow:0 0 8px #fff; filter:drop-shadow(0 0 6px #ffbdfc); z-index:3; } @keyframes pawFade{ from{opacity:1;transform:scale(1);} to{opacity:0;transform:scale(1.5);} }
+/* buttons */
+.links{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:1.5rem;
+}
 
-body.dark-mode{ background:#111119; } body.dark-mode .container{ background:rgba(25,25,35,0.85); } body.dark-mode .link-btn{ background:linear-gradient(90deg,#5555ff,#ff88ff,#ff88cc); }
+.link-btn{
+  padding:0.9rem;
+  border-radius:14px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:600;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.05);
+  transition:0.25s ease;
+  backdrop-filter:blur(10px);
+}
 
-#darkModeToggle{ position:absolute; top:12px; right:12px; background:rgba(255,255,255,0.2); color:#fff; border:none; border-radius:25px; padding:0.4rem 0.9rem; cursor:pointer; backdrop-filter:blur(10px); box-shadow:0 0 8px rgba(255,255,255,0.3); transition:0.3s; font-size:0.85rem; }
+.link-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 20px rgba(125,249,255,0.25);
+}
 
-#digitalClock{ margin-top:1.2rem; font-size:clamp(0.8rem,3vw,1.1rem); font-weight:600; color:#fff; text-shadow:0 0 8px rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); padding:0.4rem 0.9rem; border-radius:12px; display:inline-block; box-shadow:0 0 12px rgba(255,255,255,0.3); }
+/* mobile fix */
+@media(max-width:600px){
+  .links{
+    grid-template-columns:1fr;
+  }
+}
 
-@media(max-width:600px){ .links{flex-direction:column;} .link-btn{width:100%; padding:0.7rem; font-size:1rem;} } </style>
+/* footer */
+footer{
+  margin-top:1.5rem;
+  font-size:0.75rem;
+  opacity:0.6;
+}
+</style>
 
 </head>
+
 <body>
-<canvas id="particles"></canvas><div class="container">
-  <button id="darkModeToggle">🌙 Dark Mode</button>
-  <h1>🐾 Welcome to Furry Krew</h1>
-  <div class="typewriter">Where creativity, fun, and friendship come alive!</div>
-  <p class="description">
-    Furry Krew is all about <strong>creativity</strong>, <strong>fun</strong>, and <strong>building strong connections</strong>! 💙<br>
-    We specialize in creating and exploring group worlds where everyone can come together, laugh, and make memories.<br>
-    Whether you’re new to VRChat or a long-time fur, you’ll always have a place here. 🌈
-  </p>  <div class="links">
-    <a class="link-btn" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 Join us on VRChat</a>
-    <a class="link-btn" href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Join our Discord</a>
-    <a class="link-btn" href="https://x.com/FKrew48811" target="_blank">🐦 Follow us on X</a>
+
+<div class="container">
+  <h1>🐾 Furry Krew</h1>
+  <div class="tagline">Neon paws • friendships • VRChat worlds</div>
+
+  <div class="description">
+    Welcome to <strong>Furry Krew</strong> — a creative VRChat community built for hanging out, exploring worlds, and making friends.
+    Whether you're new or experienced, this is your space to vibe, build memories, and be yourself.
+  </div>
+
+  <div class="links">
+    <a class="link-btn" href="https://vrchat.com/home/group/grp_1b22718f-1f0a-42af-93eb-22ba049b4486" target="_blank">🌐 VRChat Group</a>
+    <a class="link-btn" href="https://discord.gg/Y7rNaHzq3e" target="_blank">💬 Discord</a>
+    <a class="link-btn" href="https://x.com/FKrew48811" target="_blank">🐦 X / Twitter</a>
     <a class="link-btn" href="https://www.tiktok.com/@furry_krew" target="_blank">🎵 TikTok</a>
-  </div>  <div id="digitalClock"></div>
-</div><footer>Made with 💖 paws and fluff by the Furry Krew</footer><script>
-// Paw trail effect
-document.addEventListener('mousemove', e => {
-  const paw = document.createElement('div');
-  paw.className = 'paw';
-  paw.textContent = ['🐾','💙','🌸'][Math.floor(Math.random()*3)];
-  paw.style.left = e.pageX + 'px';
-  paw.style.top = e.pageY + 'px';
-  document.body.appendChild(paw);
-  setTimeout(()=>paw.remove(),1200);
-});
+  </div>
 
-// Dark mode toggle
-const darkToggle = document.getElementById('darkModeToggle');
-darkToggle.addEventListener('click', ()=>{
-  document.body.classList.toggle('dark-mode');
-  darkToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
-});
+  <footer>Made with 🐾 by Furry Krew</footer>
+</div>
 
-// Particles animation
-const c = document.getElementById('particles');
-const ctx = c.getContext('2d');
-let w,h,particles=[];
-function resize(){ w=c.width=innerWidth; h=c.height=innerHeight; }
-window.addEventListener('resize',resize);
-resize();
-const particleCount = window.innerWidth < 600 ? 40 : 80;
-for(let i=0;i<particleCount;i++){
-  particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+0.5,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4});
-}
-function draw(){
-  ctx.clearRect(0,0,w,h);
-  ctx.fillStyle='rgba(255,255,255,0.6)';
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
-    p.x+=p.dx; p.y+=p.dy;
-    if(p.x<0||p.x>w)p.dx*=-1;
-    if(p.y<0||p.y>h)p.dy*=-1;
-  });
-  requestAnimationFrame(draw);
-}
-draw();
-
-// Digital clock
-function updateDigitalClock(){
-  const now = new Date();
-  const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
-  const date = now.toLocaleDateString(undefined, options);
-  const time = now.toLocaleTimeString();
-  document.getElementById('digitalClock').textContent = `${time} | ${date}`;
-}
-setInterval(updateDigitalClock,1000);
-updateDigitalClock();
-</script></body>
+</body>
 </html>
